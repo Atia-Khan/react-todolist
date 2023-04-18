@@ -18,11 +18,18 @@ function App() {
   }
 
   const editItem = (key, inputText) => {
-    let editList = [...listTodo, inputText]
-    setListTodo([...editList]) 
-
-  
+    for(let i in listTodo){
+      if(key === i){
+        listTodo[i] = inputText;
+      }
+    }
+     
+    // let editList = [...listTodo, inputText];
+    // setListTodo(editList);
   }
+  listTodo.forEach(element => {
+    console.log(element)
+  });
 
   return (
     <div className="main-container">
@@ -32,9 +39,9 @@ function App() {
         <h1 className="app-heading">TODO</h1>
         <hr />
         {listTodo.map((listItem, i) => {
-          return <TodoList key={i} index={i} item={listItem} deleteItem={deleteListItem} />;
+          return <TodoList key={i} index={i} item={listItem} deleteItem={deleteListItem} editItem={editItem} />;
         })}
-
+             
           {/* {listTodo.map((listItem, i) => {
           return <TodoList key={i} index={i} item={listItem} editTodo={editItem} />;
         })} */}

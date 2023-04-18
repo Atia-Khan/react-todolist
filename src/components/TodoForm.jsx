@@ -1,27 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const TodoForm = (props) => {
-    const [inputText, setInputText] = useState('');
-    const handleEnterPress = (event) => {
-      if(event.keyCode === 13){
-props.addList(inputText)
-setInputText('');
-      }
+  const [inputText, setInputText] = useState("");
+  const handleEnterPress = (event) => {
+    if (event.keyCode === 13) {
+      props.addList(inputText);
+      setInputText("");
     }
+  };
   return (
-    <div className= 'input-container'> 
-      <input type="text" className='input-box-todo' placeholder='Enter Your task to track' value={inputText}  onChange ={(event) => setInputText(event.target.value)} 
-      onKeyDown={handleEnterPress}
+    <div className="input-container">
+      <input
+        id='inputText'
+        type="text"
+        className="input-box-todo"
+        placeholder="Enter Your task to track"
+        value={inputText}
+        onChange={(event) => setInputText(event.target.value)}
+        onKeyDown={handleEnterPress}
       />
-      <button className='add-btn' onClick = {() => {
-        props.addList(inputText);
+      <button
+        className="add-btn"
+        onClick={() => {
+          props.addList(inputText);
 
-        setInputText('');
-
-      }}>+</button>
-      {/* <div>{inputText}</div> */}
+          setInputText("");
+        }}>
+        +
+      </button>
+  
     </div>
-  )
-}
+  );
+};
 
-export default TodoForm
+export default TodoForm;
